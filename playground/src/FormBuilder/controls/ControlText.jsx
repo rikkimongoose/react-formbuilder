@@ -2,17 +2,19 @@ import React from 'react'
 
 import {
     Input,
+    InputNumber,
     Tooltip,
-    Form
+    Form,
+    Checkbox
 } from 'antd'
 
 import FormItemLayout from "./FormItemLayout"
 
 const FormItem = Form.Item;
 
-const TextControl = {
+const ControlText = {
             key: "text",
-            title: "Поле ввода",
+            title: "Поле",
             create: () => {
                 return {
                     "type": "text",
@@ -25,17 +27,27 @@ const TextControl = {
             config: {
                 generator: (props) => {
                     const {
-                        type,
+                        required,
                         label,
+                        description,
+                        placeholder,
                         className,
                         name,
+                        value,
                         subtype,
+                        maxlength,
                         form
                     } = props;
 
                     const { getFieldDecorator } = form;
 
                     return (<span>
+                            <FormItem {...FormItemLayout} label="Обязательный">
+                              {getFieldDecorator('required', {
+                              })(
+                                <Checkbox />
+                              )}
+                              </FormItem>
                             <FormItem {...FormItemLayout} label="Название">
                               {getFieldDecorator('label', {
                               })(
@@ -43,59 +55,52 @@ const TextControl = {
                               )}
                               </FormItem>
 
-                            <FormItem {...FormItemLayout} label="Название">
+                            <FormItem {...FormItemLayout} label="Подпись">
                               {getFieldDecorator('label', {
+                              })(
+                                <Input placeholder="Подпись" />
+                              )}
+                              </FormItem>
+
+                            <FormItem {...FormItemLayout} label="Подсказка">
+                              {getFieldDecorator('label', {
+                              })(
+                                <Input placeholder="Всплывающая подсказка" />
+                              )}
+                              </FormItem>
+
+                            <FormItem {...FormItemLayout} label="Текст внутри">
+                              {getFieldDecorator('placeholder', {
+                              })(
+                                <Input placeholder="Текст внутри" />
+                              )}
+                              </FormItem>
+
+                            <FormItem {...FormItemLayout} label="Класс CSS">
+                              {getFieldDecorator('className', {
+                              })(
+                                <Input placeholder="Класс CSS" />
+                              )}
+                              </FormItem>
+
+                            <FormItem {...FormItemLayout} label="Название">
+                              {getFieldDecorator('name', {
                               })(
                                 <Input placeholder="Название" />
                               )}
                               </FormItem>
 
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
+                            <FormItem {...FormItemLayout} label="Значение">
+                              {getFieldDecorator('value', {
                               })(
-                                <Input placeholder="Название" />
+                                <Input placeholder="Значение" />
                               )}
                               </FormItem>
 
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
+                            <FormItem {...FormItemLayout} label="Макс. длина">
+                              {getFieldDecorator('maxlength', {
                               })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-                              
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
+                                <InputNumber min={0} />,
                               )}
                               </FormItem>
                         </span>)
@@ -121,4 +126,4 @@ const TextControl = {
             }
           };
 
-export default TextControl
+export default ControlText

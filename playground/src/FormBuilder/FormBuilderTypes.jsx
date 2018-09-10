@@ -1,11 +1,12 @@
-import TextControl from './controls/TextControl'
+import { TextControl, TextAreaControl } from './controls/'
 
 const FormBuilderTypes = [
     {
         key: "controls",
         title: "Компоненты",
         types: [
-          TextControl
+          TextControl,
+          TextAreaControl
         ]
     }, {
         key: "text",
