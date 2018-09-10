@@ -19,8 +19,8 @@ class ControlEdit extends React.Component {
         const {
             configGenerator,
             configProps,
-            controlGenerator,
-            controlProps = {},
+            controlPreviewGenerator,
+            controlPreviewProps = {},
             controlData,
             doCopy,
             doDelete,
@@ -28,7 +28,7 @@ class ControlEdit extends React.Component {
         } = this.props;
 
         const {
-            controlPropsCurrent = controlProps
+            controlPropsCurrent = controlPreviewProps
         } = this.state;
 
         const {
@@ -49,10 +49,10 @@ class ControlEdit extends React.Component {
                 onCancel
             };
 
-        const controlView = controlGenerator(controlPropsCurrent, controlData);
+        const controlView = controlPreviewGenerator(controlPropsCurrent, controlData);
 
         return (<div>
-            <Button icon="copy" onClick={() => { doCopy && doCopy(controlProps) }} />
+            <Button icon="copy" onClick={() => { doCopy && doCopy(controlPreviewProps) }} />
             <Button icon="delete" onClick={() => { doDelete && doDelete() }}/>
             {controlView}
             <Collapse defaultActiveKey={[]}>
@@ -69,8 +69,8 @@ export default ControlEdit;
 ControlEdit.propTypes = {
     configGenerator: PropTypes.func.isRequired,
     configProps: PropTypes.object.isRequired,
-    controlGenerator: PropTypes.func.isRequired,
-    controlProps: PropTypes.object,
+    controlPreviewGenerator: PropTypes.func.isRequired,
+    controlPreviewProps: PropTypes.object,
     controlData: PropTypes.object,
     doCopy: PropTypes.func,
     doDelete: PropTypes.func,

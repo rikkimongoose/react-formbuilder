@@ -22,7 +22,19 @@ class ControlsContainer extends React.Component {
     } = this.props;
 
     const controlToProps = (control) => {
-      const controlInfo = controlTypes[control.type];
+      const controlInfo = controlTypes.find(t => t.key === control.type);
+      const controlData = {
+        configGenerator: controlInfo.config.generator,
+        configProps: controlInfo.config.props,
+        controlPreviewGenerator: (controlInfo.preview && controlInfo.preview.generator) || controlInfo.view.generator,
+        controlPreviewProps: (controlInfo.preview && controlInfo.preview.props) || controlInfo.view.props,
+        controlData: controlsData[control.name],
+        doCopy,
+        doDelete,
+        doUpdate,
+        form
+      };
+      debugger;
       return {
         configGenerator: controlInfo.config.generator,
         configProps: controlInfo.config.props,
