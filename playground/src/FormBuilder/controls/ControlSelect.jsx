@@ -14,15 +14,13 @@ const FormItem = Form.Item;
 const { TextArea } = Input;
 
 const ControlSelect = {
-            key: "textarea",
+            key: "select",
             title: "Текст",
             create: () => {
                 return  {
-                    "type": "textarea",
+                    "type": "select",
                     "label": "Text Area",
-                    "className": "form-control",
-                    "name": "textarea-1536598113435",
-                    "subtype": "textarea"
+                    "name": "select-1536598113435",
                 };
             },
             config: {

@@ -18,11 +18,9 @@ const ControlParagraph = {
             title: "Текст",
             create: () => {
                 return  {
-                    "type": "textarea",
-                    "label": "Text Area",
-                    "className": "form-control",
-                    "name": "textarea-1536598113435",
-                    "subtype": "textarea"
+                    "type": "paragraph",
+                    "label": "paragraph",
+                    "subtype": "p"
                 };
             },
             config: {

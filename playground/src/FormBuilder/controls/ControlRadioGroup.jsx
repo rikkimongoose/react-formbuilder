@@ -14,15 +14,13 @@ const FormItem = Form.Item;
 const { TextArea } = Input;
 
 const ControlRadioGroup = {
-            key: "textarea",
+            key: "radio-group",
             title: "Текст",
             create: () => {
                 return  {
-                    "type": "textarea",
+                    "type": "radio-group",
                     "label": "Text Area",
-                    "className": "form-control",
                     "name": "textarea-1536598113435",
-                    "subtype": "textarea"
                 };
             },
             config: {

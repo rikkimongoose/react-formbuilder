@@ -13,12 +13,12 @@ import FormItemLayout from "./FormItemLayout"
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-const Control = {
-            key: "textarea",
-            title: "Текст",
+const ControlCheckBox = {
+            key: "checkbox",
+            title: "Флажок",
             create: () => {
                 return  {
-                    "type": "textarea",
+                    "type": "checkbox",
                     "label": "Text Area",
                     "className": "form-control",
                     "name": "textarea-1536598113435",

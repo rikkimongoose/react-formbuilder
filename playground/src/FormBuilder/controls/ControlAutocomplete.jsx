@@ -14,16 +14,29 @@ const FormItem = Form.Item;
 const { TextArea } = Input;
 
 const ControlAutocomplete = {
-            key: "textarea",
-            title: "Текст",
+            key: "autocomplete",
+            title: "Автозаполнение",
             create: () => {
-                return  {
-                    "type": "textarea",
-                    "label": "Text Area",
-                    "className": "form-control",
-                    "name": "textarea-1536598113435",
-                    "subtype": "textarea"
-                };
+                return {
+                      "type": "autocomplete",
+                      "label": "Autocomplete",
+                      "className": "form-control",
+                      "name": "autocomplete-1536599310930",
+                      "values": [
+                        {
+                          "label": "Option 1",
+                          "value": "option-1"
+                        },
+                        {
+                          "label": "Option 2",
+                          "value": "option-2"
+                        },
+                        {
+                          "label": "Option 3",
+                          "value": "option-3"
+                        }
+                      ]
+                    };
             },
             config: {
                 generator: (props) => {

@@ -14,15 +14,14 @@ const FormItem = Form.Item;
 const { TextArea } = Input;
 
 const ControlDate = {
-            key: "textarea",
-            title: "Текст",
+            key: "date",
+            title: "Дата",
             create: () => {
                 return  {
-                    "type": "textarea",
+                    "type": "date",
                     "label": "Text Area",
                     "className": "form-control",
                     "name": "textarea-1536598113435",
-                    "subtype": "textarea"
                 };
             },
             config: {
