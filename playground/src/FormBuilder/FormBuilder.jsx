@@ -107,7 +107,6 @@ class FormBuilder extends React.Component {
     }
 
     const controlTypesFlat = controlTypesToFlatList(controlTypes);
-    console.log(controlTypesFlat);
 
     const controlsPaletteProps = {
       controlTypes,

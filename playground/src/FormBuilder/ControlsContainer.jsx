@@ -34,7 +34,6 @@ class ControlsContainer extends React.Component {
         doUpdate,
         form
       };
-      debugger;
       return {
         configGenerator: controlInfo.config.generator,
         configProps: controlInfo.config.props,

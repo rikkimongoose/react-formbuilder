@@ -16,7 +16,7 @@ class ControlEditor extends React.Component {
 
     const {
       validateFields
-    } = this.form;
+    } = form;
     
     const handleOk = () => {
              validateFields((errors, values) => {
