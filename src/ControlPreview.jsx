@@ -21,7 +21,7 @@ class ControlPreview extends React.Component {
 
 export default ControlPreview;
 
-ControlPreview.PropTypes = {
+ControlPreview.propTypes = {
     controlPreviewGenerator: PropTypes.func.isRequired,
     controlPreviewProps: PropTypes.object,
     controlData: PropTypes.object,

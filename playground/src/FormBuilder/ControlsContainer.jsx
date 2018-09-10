@@ -2,13 +2,11 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-import { Form, Button } from 'antd'
+import { Form } from 'antd'
 
 import FormBuilderMode from './FormBuilderMode'
 import ControlPreview from './ControlPreview'
 import ControlEdit from './ControlEdit'
-
-const defaultState = {}
 
 class ControlsContainer extends React.Component {
   render() {
@@ -28,8 +26,8 @@ class ControlsContainer extends React.Component {
       return {
         configGenerator: controlInfo.config.generator,
         configProps: controlInfo.config.props,
-        controlPreviewGenerator: controlInfo.preview && controlInfo.preview.generator || controlInfo.view.generator,
-        controlPreviewProps: controlInfo.preview && controlInfo.preview.props || controlInfo.view.props,
+        controlPreviewGenerator: (controlInfo.preview && controlInfo.preview.generator) || controlInfo.view.generator,
+        controlPreviewProps: (controlInfo.preview && controlInfo.preview.props) || controlInfo.view.props,
         controlData: controlsData[control.name],
         doCopy,
         doDelete,
@@ -50,7 +48,7 @@ class ControlsContainer extends React.Component {
 
 export default Form.create()(ControlsContainer);
 
-ControlsContainer.PropTypes = {
+ControlsContainer.propTypes = {
   doCopy: PropTypes.func,
   doDelete: PropTypes.func,
   doUpdate: PropTypes.func,

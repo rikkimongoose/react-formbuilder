@@ -32,7 +32,7 @@ class ControlsPalette extends React.Component {
 
 export default ControlsPalette;
 
-ControlsPalette.PropTypes = {
+ControlsPalette.propTypes = {
   controlTypes: PropTypes.array.isRequired,
   doAdd: PropTypes.func
 }

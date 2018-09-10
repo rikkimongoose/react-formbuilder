@@ -40,7 +40,7 @@ class ControlEditor extends React.Component {
 
 export default Form.create()(ControlEditor);
 
-ControlEditor.PropTypes = {
+ControlEditor.propTypes = {
   form: PropTypes.any.isRequired,
   configGenerator: PropTypes.func.isRequired,
   configProps: PropTypes.object.isRequired,

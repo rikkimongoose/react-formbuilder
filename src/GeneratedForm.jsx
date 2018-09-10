@@ -199,10 +199,10 @@ class GeneratedForm extends React.Component {
             <InputNumber
               id={key}
               placeholder={control.placeholder}
-              min={parseInt(control.min || 0)}
-              max={parseInt(control.max || 100)} 
-              step={parseInt(control.step || 1)}
-              defaultValue={parseInt(initialValue || 0)}
+              min={parseInt(control.min || 0, 10)}
+              max={parseInt(control.max || 100, 10)} 
+              step={parseInt(control.step || 1, 10)}
+              defaultValue={parseInt(initialValue || 0, 10)}
               disabled={localThis.isReadOnly}
               onChange = {(val) => localThis.setCachedValue(key, val)}
               />, { prevValues, totalValues });
@@ -403,7 +403,7 @@ class GeneratedForm extends React.Component {
 
   packControls(controls) {
     const regExpHeader = /h(\d+)/i;
-    const generateLevel = control => parseInt(control.subtype.replace(regExpHeader, "$1"));
+    const generateLevel = control => parseInt(control.subtype.replace(regExpHeader, "$1"), 10);
     const createPanel = (control, key) => {
       return { label: control.label, key, controls: [] };
     }
@@ -540,7 +540,7 @@ class GeneratedForm extends React.Component {
 
 export default GeneratedForm;
 
-GeneratedForm.PropTypes = {
+GeneratedForm.propTypes = {
   documentId: PropTypes.any,
   prevValues: PropTypes.array,
   totalValues: PropTypes.any,

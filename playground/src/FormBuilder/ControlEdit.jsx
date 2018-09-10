@@ -24,8 +24,7 @@ class ControlEdit extends React.Component {
             controlData,
             doCopy,
             doDelete,
-            doUpdate,
-            form
+            doUpdate
         } = this.props;
 
         const {
@@ -67,7 +66,7 @@ class ControlEdit extends React.Component {
 
 export default ControlEdit;
 
-ControlEdit.PropTypes = {
+ControlEdit.propTypes = {
     configGenerator: PropTypes.func.isRequired,
     configProps: PropTypes.object.isRequired,
     controlGenerator: PropTypes.func.isRequired,

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import FormBuilderMode from './FormBuilderMode'
 import ControlsPalette from './ControlsPalette'
 import ControlsContainer from './ControlsContainer'
+import FormBuilderTypes from './FormBuilderTypes'
+
 
 const generateUUID = () => {
   const s4 = () => Math.floor((1 + Math.random()) * 0x10000)
@@ -52,7 +54,7 @@ class FormBuilder extends React.Component {
   render() {
     const { controlsCurrent } = this.state;
     const {
-      controlTypes,
+      controlTypes = FormBuilderTypes,
       controls = controlsCurrent,
       controlsData = [],
       mode = FormBuilderMode.Edit
@@ -113,6 +115,7 @@ class FormBuilder extends React.Component {
     };
 
     const controlsContainerProps = {
+      controlTypes: controlTypesFlat,
       doCopy,
       doDelete,
       doUpdate,
@@ -133,9 +136,9 @@ class FormBuilder extends React.Component {
 
 export default FormBuilder;
 
-FormBuilder.PropTypes = {
-  controlTypes:  PropTypes.array.isRequired,
+FormBuilder.propTypes = {
+  controlTypes:  PropTypes.array,
   controls: PropTypes.array,
   controlsData: PropTypes.array,
-  mode: PropTypes.any.isRequired
+  mode: PropTypes.any
 }
