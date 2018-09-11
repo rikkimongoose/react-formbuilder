@@ -146,7 +146,7 @@ const ControlRadioGroup = {
                     const { getFieldDecorator } = form,
                           defaultValue = data || value;
 
-                    const radioVariants = values.map(v => <Radio value={v.value}>{v.label}</Radio>)
+                    const radioVariants = values.map(v => <Radio value={v.value} key={v.value}>{v.label}</Radio>)
 
                     const tooltipProps = {
                       title: description,

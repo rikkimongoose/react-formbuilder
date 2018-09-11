@@ -147,7 +147,7 @@ const ControlSelect = {
                     const { getFieldDecorator } = form,
                           defaultValue = data || value;
 
-                    const selectVariants = values.map(v => <Option value={v.value}>{v.label}</Option>)
+                    const selectVariants = values.map(v => <Option value={v.value} key={v.value}>{v.label}</Option>)
 
                     const tooltipProps = {
                       title: description,

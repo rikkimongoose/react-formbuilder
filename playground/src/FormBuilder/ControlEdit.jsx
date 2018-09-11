@@ -54,7 +54,7 @@ class ControlEdit extends React.Component {
 
         return (<div>
             <Button icon="copy" onClick={() => { doCopy && doCopy(controlPreviewProps) }} />
-            <Button icon="delete" onClick={() => { doDelete && doDelete() }}/>
+            <Button icon="delete" onClick={() => { doDelete && doDelete(controlPreviewProps) }}/>
             {controlView}
             <Collapse defaultActiveKey={[]}>
                 <Panel header="Редактировать">
