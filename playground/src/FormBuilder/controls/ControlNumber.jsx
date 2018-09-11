@@ -19,7 +19,7 @@ const ControlNumber = {
             create: () => {
                 return  {
                     "type": "number",
-                    "label": "Text Area",
+                    "label": "Число",
                     "className": "form-control",
                     "name": "number-1536598113435",
                 };
@@ -143,7 +143,6 @@ const ControlNumber = {
 
                     const controlProps = {
                         className,
-                        defaultValue: value,
                         min,
                         max,
                         step
@@ -152,6 +151,7 @@ const ControlNumber = {
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue: defaultValue
                             })(<InputNumber {...controlProps} />,
                             )}
                             </FormItem>

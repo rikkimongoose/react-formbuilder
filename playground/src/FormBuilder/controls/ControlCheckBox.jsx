@@ -19,7 +19,7 @@ const ControlCheckBox = {
             create: () => {
                 return  {
                     "type": "checkbox",
-                    "label": "Text Area",
+                    "label": "Флажок",
                     "className": "form-control",
                     "name": "textarea-1536598113435",
                     "subtype": "textarea"
@@ -138,17 +138,17 @@ const ControlCheckBox = {
 
                     const formItemProps = {
                       ...FormItemLayout,
-                      label
+                      label: ""
                     };
 
                     const controlProps = {
-                      className,
-                      defaultValue
+                      className
                     }
 
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue:defaultValue
                             })(
                               <Checkbox {...controlProps}>{label}</Checkbox>
                             )}

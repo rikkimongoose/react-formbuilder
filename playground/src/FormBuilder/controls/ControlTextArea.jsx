@@ -19,7 +19,7 @@ const ControlTextArea = {
             create: () => {
                 return  {
                     "type": "textarea",
-                    "label": "Text Area",
+                    "label": "Текст",
                     "className": "form-control",
                     "name": "textarea-1536598113435",
                     "subtype": "textarea"
@@ -127,6 +127,7 @@ const ControlTextArea = {
                         value,
                         subtype,
                         maxlength,
+                        readonly,
                         rows,
                         form
                     } = props;
@@ -155,6 +156,7 @@ const ControlTextArea = {
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue:defaultValue
                             })(<TextArea {...controlProps} />)}
                             </FormItem>
                             </Tooltip>);   

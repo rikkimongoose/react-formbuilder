@@ -103,7 +103,6 @@ const ControlAutocomplete = {
             },
             view: {
                 generator: (props, data) => {
-                    debugger;
                     const {
                       type,
                       label,
@@ -133,13 +132,13 @@ const ControlAutocomplete = {
                     const controlProps = {
                       className,
                       placeholder,
-                      defaultValue,
                       dataSource: autoCompleteValues
                     }
 
                     return (<Tooltip title={description} key={name}>
                               <FormItem {...formItemProps}>
                               {getFieldDecorator(label, {
+                                initialValue:defaultValue
                                 })(
                                 <AutoComplete {...controlProps} />
                                 )}

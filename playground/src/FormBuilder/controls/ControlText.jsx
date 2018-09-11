@@ -18,7 +18,7 @@ const ControlText = {
             create: () => {
                 return {
                     "type": "text",
-                    "label": "Text Field",
+                    "label": "Поле",
                     "className": "form-control",
                     "name": "text-1536592306613",
                     "subtype": "text"
@@ -139,13 +139,13 @@ const ControlText = {
                     const controlProps = {
                       className,
                       placeholder,
-                      disabled: readonly,
-                      defaultValue
+                      disabled: readonly
                     };
 
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue:defaultValue
                             })(<Input {...controlProps} />)}
                             </FormItem>
                             </Tooltip>);                

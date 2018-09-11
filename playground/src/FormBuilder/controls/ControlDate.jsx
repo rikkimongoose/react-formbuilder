@@ -22,7 +22,7 @@ const ControlDate = {
             create: () => {
                 return  {
                     "type": "date",
-                    "label": "Text Area",
+                    "label": "Дата",
                     "className": "form-control",
                     "name": "textarea-1536598113435",
                 };
@@ -132,7 +132,7 @@ const ControlDate = {
                     } = props;
 
                     const { getFieldDecorator } = form,
-                          currentValue = data || value;
+                          defaultValue = data || value;
 
                     const tooltipProps = {
                       title: description,
@@ -148,13 +148,13 @@ const ControlDate = {
                       className,
                       placeholder,
                       disabled: readonly,
-                      defaultValue,
                       format: dateFormatForDisplay
                     }
 
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue: defaultValue
                             })(<DatePicker {...controlProps} />)}
                             </FormItem>
                             </Tooltip>);

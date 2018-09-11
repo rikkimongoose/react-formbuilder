@@ -67,26 +67,26 @@ class FormBuilder extends React.Component {
     const doAdd = (controlType) => {
       const {controlsCurrent} = this.state;
       const control = controlType.create()
-      controlsCurrent.push( { ...control, id: generateUUID() });
+      controlsCurrent.push( { ...control, name: generateUUID() });
       this.setState({controlsCurrent});
     };
 
     const doCopy = (control) => {
       const {controlsCurrent} = this.state;
-      const newControl = { ...control, id: generateUUID() }
+      const newControl = { ...control, name: generateUUID() }
       controlsCurrent.push(newControl);
       this.setState({controlsCurrent});
     };
 
     const doDelete = (control) => {
       const {controlsCurrent} = this.state;
-      const controlsNew = controlsCurrent.filter(c => c.id !== control.id);
+      const controlsNew = controlsCurrent.filter(c => c.name !== control.name);
       this.setState({controlsCurrent: controlsNew});
     };
 
     const doUpdate = (control) => {
       const {controlsCurrent} = this.state;
-      const baseControl = controlsCurrent.find(c => c.id === control.id) || null;
+      const baseControl = controlsCurrent.find(c => c.name === control.name) || null;
       if(baseControl){
         const controlIndex = controlsCurrent.indexOf(baseControl);
         controlsCurrent[controlIndex] = control;
@@ -98,7 +98,7 @@ class FormBuilder extends React.Component {
 
     const doMove = (control, index) => {
       const {controlsCurrent} = this.state;
-      const baseControl = controlsCurrent.find(c => c.id === control.id) || null;
+      const baseControl = controlsCurrent.find(c => c.name === control.name) || null;
       if(!baseControl) {
         controlsCurrent.splice(index, 0, control);
       } else { 
@@ -128,6 +128,8 @@ class FormBuilder extends React.Component {
       controlsData,
       mode
     };
+
+    console.log(controls);
 
     const paletteView = (mode === FormBuilderMode.Edit) ? (<ControlsPalette {...controlsPaletteProps} />) : (<span />)
 

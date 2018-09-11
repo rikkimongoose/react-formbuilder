@@ -20,7 +20,7 @@ const ControlParagraph = {
             create: () => {
                 return  {
                     "type": "paragraph",
-                    "label": "paragraph",
+                    "label": "Абзац",
                     "subtype": "p"
                 };
             },

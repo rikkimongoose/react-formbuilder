@@ -20,10 +20,10 @@ const ControlHeader = {
             create: () => {
                 return  {
                     "type": "header",
-                    "label": "Text Area",
+                    "label": "Заголовок",
                     "className": "form-control",
                     "name": "header-1536598113435",
-                    "subtype": "header"
+                    "subtype": "h1"
                 };
             },
             config: {
