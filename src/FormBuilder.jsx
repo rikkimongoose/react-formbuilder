@@ -7,6 +7,10 @@ import ControlsPalette from './ControlsPalette'
 import ControlsContainer from './ControlsContainer'
 import FormBuilderTypes from './FormBuilderTypes'
 
+import { Row, Col } from 'antd'
+import { Layout } from 'antd';
+
+const { Sider, Content } = Layout;
 
 const generateUUID = () => {
   const s4 = () => Math.floor((1 + Math.random()) * 0x10000)
@@ -110,7 +114,7 @@ class FormBuilder extends React.Component {
     const controlTypesFlat = controlTypesToFlatList(controlTypes);
 
     const controlsPaletteProps = {
-      controlTypes: controlTypesFlat,
+      controlTypes,
       doAdd
     };
 
@@ -127,10 +131,10 @@ class FormBuilder extends React.Component {
 
     const paletteView = (mode === FormBuilderMode.Edit) ? (<ControlsPalette {...controlsPaletteProps} />) : (<span />)
 
-    return (<div>
-      <div>{paletteView}</div>
-      <div><ControlsContainer {...controlsContainerProps} /></div>
-      </div>);
+    return (<Row>
+      <Col span={12}>{paletteView}</Col>
+      <Col span={12}><ControlsContainer {...controlsContainerProps} /></Col>
+    </Row>);
   }
 }
 

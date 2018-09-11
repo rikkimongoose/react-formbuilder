@@ -17,7 +17,7 @@ class ControlsPalette extends React.Component {
     const generateControlType = (controlType) => <MenuItem key={controlType.key} onClick={() => doAdd(controlType)}>{controlType.title}</MenuItem>;
 
     const generateControlTypeGroup = (controlTypeGroup) => (
-      <SubMenu key={controlTypeGroup.key} title={<span><Icon type={controlTypeGroup.icon} /><span>{controlTypeGroup.title}</span></span>}>
+      <SubMenu key={controlTypeGroup.key} title={controlTypeGroup.title}>
         {controlTypeGroup.types.map(c => generateControlType(c))}
       </SubMenu>);
 

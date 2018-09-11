@@ -26,3 +26,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+  text-align: left;
+}
+
+.ant-menu-sub.ant-menu-inline > .ant-menu-item {
+  text-align: left;
+}
+
+.ant-form-item-children {
+  float: left;
+}

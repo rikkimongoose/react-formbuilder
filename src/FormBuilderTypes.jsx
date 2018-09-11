@@ -1,12 +1,37 @@
+import {     
+    ControlAutocomplete,
+    ControlCheckBox,
+    ControlDate,
+    ControlHeader,
+    ControlNumber,
+    ControlParagraph,
+    ControlRadioGroup,
+    ControlSelect,
+    ControlText,
+    ControlTextArea
+} from './controls'
+
 const FormBuilderTypes = [
     {
         key: "controls",
-        icon: "form",
-        types: []
+        title: "Компоненты",
+        types: [
+            ControlAutocomplete,
+            ControlCheckBox,
+            ControlDate,
+            ControlNumber,
+            ControlRadioGroup,
+            ControlSelect,
+            ControlText,
+            ControlTextArea
+        ]
     }, {
         key: "text",
-        icon: "file-text",
-        types: []
+        title: "Текст",
+        types: [
+            ControlHeader,
+            ControlParagraph,
+        ]
     }
   
 ];

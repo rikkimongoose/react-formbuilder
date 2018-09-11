@@ -24,7 +24,8 @@ class ControlEdit extends React.Component {
             controlData,
             doCopy,
             doDelete,
-            doUpdate
+            doUpdate,
+            form
         } = this.props;
 
         const {
@@ -49,7 +50,7 @@ class ControlEdit extends React.Component {
                 onCancel
             };
 
-        const controlView = controlPreviewGenerator(controlPropsCurrent, controlData);
+        const controlView = controlPreviewGenerator({ ...controlPropsCurrent, form }, controlData);
 
         return (<div>
             <Button icon="copy" onClick={() => { doCopy && doCopy(controlPreviewProps) }} />
