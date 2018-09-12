@@ -9,6 +9,7 @@ import {
     AutoComplete
 } from 'antd'
 
+import EditFormHeader from "./EditFormHeader"
 import FormItemLayout from "./FormItemLayout"
 
 const FormItem = Form.Item;
@@ -36,13 +37,6 @@ const ControlAutocomplete = {
             config: {
                 generator: (props) => {
                     const {
-                        required,
-                        label,
-                        placeholder,
-                        description,
-                        className,
-                        name,
-                        value,
                         values,
                         form
                     } = props;
@@ -50,47 +44,7 @@ const ControlAutocomplete = {
                     const { getFieldDecorator } = form;
 
                     return (<span>
-                            <FormItem {...FormItemLayout} label="Обязательный">
-                              {getFieldDecorator('required', {
-                              })(
-                                <Checkbox />
-                              )}
-                              </FormItem>
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подсказка">
-                              {getFieldDecorator('placeholder', {
-                              })(
-                                <Input placeholder="Подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Всплывающая подсказка">
-                              {getFieldDecorator('description', {
-                              })(
-                                <Input placeholder="Всплывающая подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="CSS класс">
-                              {getFieldDecorator('className', {
-                              })(
-                                <Input placeholder="CSS класс" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('name', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
+                            {EditFormHeader(props, form)}
                             <FormItem {...FormItemLayout} label="Значение">
                               {getFieldDecorator('value', {
                               })(
