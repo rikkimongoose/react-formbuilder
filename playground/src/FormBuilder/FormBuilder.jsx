@@ -7,17 +7,11 @@ import ControlsPalette from './ControlsPalette'
 import ControlsContainer from './ControlsContainer'
 import FormBuilderTypes from './FormBuilderTypes'
 
-import { Row, Col } from 'antd'
-import { Layout } from 'antd';
+import { Row, Col, Layout } from 'antd'
+
+import generateUUID from './controls/generateUUID'
 
 const { Sider, Content } = Layout;
-
-const generateUUID = () => {
-  const s4 = () => Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
 
 const moveInArray = (arr, pos1, pos2) => {
   // local variables

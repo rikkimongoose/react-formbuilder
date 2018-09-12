@@ -23,13 +23,13 @@ const ControlAutocomplete = {
                       "name": "autocomplete-1536599310930",
                       "values": [
                         {
-                          "label": "Option 1"
+                          "label": "Вариант 1"
                         },
                         {
-                          "label": "Option 2"
+                          "label": "Вариант 2"
                         },
                         {
-                          "label": "Option 3"
+                          "label": "Вариант 3"
                         }
                       ]
                     }),

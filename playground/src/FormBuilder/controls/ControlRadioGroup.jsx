@@ -25,15 +25,15 @@ const ControlRadioGroup = {
                     "name": "textarea-1536598113435",
                     "values": [
                         {
-                          "label": "Option 1",
+                          "label": "Вариант 1",
                           "value": "option-1"
                         },
                         {
-                          "label": "Option 2",
+                          "label": "Вариант 2",
                           "value": "option-2"
                         },
                         {
-                          "label": "Option 3",
+                          "label": "Вариант 3",
                           "value": "option-3"
                         }
                       ]
