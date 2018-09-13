@@ -8,6 +8,7 @@ import {
     Checkbox
 } from 'antd'
 
+import EditFormHeader from "./EditFormHeader"
 import FormItemLayout from "./FormItemLayout"
 
 const FormItem = Form.Item;
@@ -18,7 +19,7 @@ const ControlText = {
             create: () => {
                 return {
                     "type": "text",
-                    "label": "Text Field",
+                    "label": "Поле",
                     "className": "form-control",
                     "name": "text-1536592306613",
                     "subtype": "text"
@@ -27,14 +28,7 @@ const ControlText = {
             config: {
                 generator: (props) => {
                     const {
-                        required,
-                        label,
-                        description,
-                        placeholder,
-                        className,
-                        name,
                         value,
-                        subtype,
                         maxlength,
                         form
                     } = props;
@@ -42,65 +36,19 @@ const ControlText = {
                     const { getFieldDecorator } = form;
 
                     return (<span>
-                            <FormItem {...FormItemLayout} label="Обязательный">
-                              {getFieldDecorator('required', {
-                              })(
-                                <Checkbox />
-                              )}
-                              </FormItem>
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подпись">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Подпись" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подсказка">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Всплывающая подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Текст внутри">
-                              {getFieldDecorator('placeholder', {
-                              })(
-                                <Input placeholder="Текст внутри" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Класс CSS">
-                              {getFieldDecorator('className', {
-                              })(
-                                <Input placeholder="Класс CSS" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('name', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
+                            {EditFormHeader(props, form)}
                             <FormItem {...FormItemLayout} label="Значение">
                               {getFieldDecorator('value', {
+                                initialValue: value
                               })(
                                 <Input placeholder="Значение" />
                               )}
                               </FormItem>
-
                             <FormItem {...FormItemLayout} label="Макс. длина">
                               {getFieldDecorator('maxlength', {
+                                initialValue: maxlength
                               })(
-                                <InputNumber min={0} />,
+                                <InputNumber min={1} />,
                               )}
                               </FormItem>
                         </span>)
@@ -139,13 +87,13 @@ const ControlText = {
                     const controlProps = {
                       className,
                       placeholder,
-                      disabled: readonly,
-                      defaultValue
+                      disabled: readonly
                     };
 
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue:defaultValue
                             })(<Input {...controlProps} />)}
                             </FormItem>
                             </Tooltip>);                

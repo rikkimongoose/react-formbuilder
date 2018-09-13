@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Form } from 'antd'
+import { DragDropContext } from 'react-beautiful-dnd'
 
 import FormBuilderMode from './FormBuilderMode'
 import ControlPreview from './ControlPreview'
@@ -38,8 +39,9 @@ class ControlsContainer extends React.Component {
         configGenerator: controlInfo.config.generator,
         configProps: controlInfo.config.props,
         controlPreviewGenerator: (controlInfo.preview && controlInfo.preview.generator) || controlInfo.view.generator,
-        controlPreviewProps: (controlInfo.preview && controlInfo.preview.props) || controlInfo.view.props,
+        controlPreviewProps: control,
         controlData: controlsData[control.name],
+        key: control.name,
         doCopy,
         doDelete,
         doUpdate,
@@ -51,9 +53,15 @@ class ControlsContainer extends React.Component {
     const generateControlEdit = (controlProps) => <ControlEdit {...controlProps} />;
     const generateControl = (mode === FormBuilderMode.Edit) ? generateControlEdit : generateControlPreview;
 
+    const onDragEnd = () => {
+        // the only one that is required
+    };
+
+    const DragDropContextProps = {onDragEnd};
+
     const controlsView = controls.map(c => generateControl(controlToProps(c)));
 
-    return (<div>{controlsView}</div>);
+    return (<DragDropContext {...DragDropContextProps}>{controlsView}</DragDropContext>);
   }
 }
 

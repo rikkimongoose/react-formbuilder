@@ -7,17 +7,11 @@ import ControlsPalette from './ControlsPalette'
 import ControlsContainer from './ControlsContainer'
 import FormBuilderTypes from './FormBuilderTypes'
 
-import { Row, Col } from 'antd'
-import { Layout } from 'antd';
+import { Row, Col, Layout } from 'antd'
+
+import generateUUID from './controls/generateUUID'
 
 const { Sider, Content } = Layout;
-
-const generateUUID = () => {
-  const s4 = () => Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
 
 const moveInArray = (arr, pos1, pos2) => {
   // local variables
@@ -67,26 +61,26 @@ class FormBuilder extends React.Component {
     const doAdd = (controlType) => {
       const {controlsCurrent} = this.state;
       const control = controlType.create()
-      controlsCurrent.push( { ...control, id: generateUUID() });
+      controlsCurrent.push( { ...control, name: generateUUID() });
       this.setState({controlsCurrent});
     };
 
     const doCopy = (control) => {
       const {controlsCurrent} = this.state;
-      const newControl = { ...control, id: generateUUID() }
+      const newControl = { ...control, name: generateUUID() }
       controlsCurrent.push(newControl);
       this.setState({controlsCurrent});
     };
 
     const doDelete = (control) => {
       const {controlsCurrent} = this.state;
-      const controlsNew = controlsCurrent.filter(c => c.id !== control.id);
+      const controlsNew = controlsCurrent.filter(c => c.name !== control.name);
       this.setState({controlsCurrent: controlsNew});
     };
 
     const doUpdate = (control) => {
       const {controlsCurrent} = this.state;
-      const baseControl = controlsCurrent.find(c => c.id === control.id) || null;
+      const baseControl = controlsCurrent.find(c => c.name === control.name) || null;
       if(baseControl){
         const controlIndex = controlsCurrent.indexOf(baseControl);
         controlsCurrent[controlIndex] = control;
@@ -98,7 +92,7 @@ class FormBuilder extends React.Component {
 
     const doMove = (control, index) => {
       const {controlsCurrent} = this.state;
-      const baseControl = controlsCurrent.find(c => c.id === control.id) || null;
+      const baseControl = controlsCurrent.find(c => c.name === control.name) || null;
       if(!baseControl) {
         controlsCurrent.splice(index, 0, control);
       } else { 
@@ -128,6 +122,8 @@ class FormBuilder extends React.Component {
       controlsData,
       mode
     };
+
+    console.log(controls);
 
     const paletteView = (mode === FormBuilderMode.Edit) ? (<ControlsPalette {...controlsPaletteProps} />) : (<span />)
 

@@ -3,16 +3,27 @@ import React from 'react'
 import {
     Input,
     InputNumber,
+    Select,
     Tooltip,
-    Form,
-    Checkbox
+    Form
 } from 'antd'
 
 import FormItemLayout from "./FormItemLayout"
 import removeTags from "./removeTags"
 
 const FormItem = Form.Item;
-const { TextArea } = Input;
+const Option = Select.Option;
+
+const types = [],
+      headersCount = 6;
+let i;
+for(i = 1; i<headersCount; i++){
+  const newHeader = "h"+i;
+  types.push({
+    label:newHeader,
+    value:newHeader
+  });
+}
 
 const ControlHeader = {
             key: "header",
@@ -20,112 +31,68 @@ const ControlHeader = {
             create: () => {
                 return  {
                     "type": "header",
-                    "label": "Text Area",
+                    "label": "Заголовок",
                     "className": "form-control",
                     "name": "header-1536598113435",
-                    "subtype": "header"
+                    "subtype": "h1"
                 };
             },
             config: {
                 generator: (props) => {
                     const {
-                        required,
-                        label,
-                        description,
-                        placeholder,
-                        className,
-                        name,
-                        value,
                         subtype,
-                        maxlength,
-                        rows,
+                        label,
+                        className,
                         form
                     } = props;
 
                     const { getFieldDecorator } = form;
 
+                    const typeOptions = types.map(t => <Option key={t.value} value={t.value}>{t.label}</Option>);
+
                     return (<span>
-                            <FormItem {...FormItemLayout} label="Обязательный">
-                              {getFieldDecorator('required', {
+                            <FormItem {...FormItemLayout} label="Тип">
+                              {getFieldDecorator('subtype', {
+                                initialValue: subtype
                               })(
-                                <Checkbox />
+                                 <Select>
+                                  {typeOptions}
+                                 </Select>
                               )}
                               </FormItem>
-                            <FormItem {...FormItemLayout} label="Название">
+
+                            <FormItem {...FormItemLayout} label="Текст">
                               {getFieldDecorator('label', {
+                                initialValue: label
                               })(
-                                <Input placeholder="Название" />
+                                <Input placeholder="Содержимое" />
                               )}
                               </FormItem>
 
-                            <FormItem {...FormItemLayout} label="Подпись">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Подпись" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подсказка">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Всплывающая подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Текст внутри">
-                              {getFieldDecorator('placeholder', {
-                              })(
-                                <Input placeholder="Текст внутри" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Класс CSS">
-                              {getFieldDecorator('className', {
-                              })(
-                                <Input placeholder="Класс CSS" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('name', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Значение">
-                              {getFieldDecorator('value', {
-                              })(
-                                <Input placeholder="Значение" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Макс. длина">
-                              {getFieldDecorator('maxlength', {
-                              })(
-                                <InputNumber min={0} />,
-                              )}
-                              </FormItem>
-                            <FormItem {...FormItemLayout} label="Строки">
-                              {getFieldDecorator('rows', {
-                              })(
-                                <InputNumber min={0} />,
-                              )}
-                              </FormItem>
-                        </span>)
-                },
-                props: {}
+                              <FormItem {...FormItemLayout} label="CSS класс">
+                                {getFieldDecorator('className', {
+                                  initialValue: className
+                                })(
+                                  <Input placeholder="CSS класс" />
+                                )}
+                                </FormItem>
+                        </span>);
+                }
             },
             view: {
                 generator: (props) => {
                     const {
                       subtype,
-                      label
+                      label,
+                      className
                     } = props;
                     const CustomTag = `${subtype}`;
-                    return (<CustomTag>{removeTags(label)}</CustomTag>);
-                },
-                props: {}
+                    const CustomTagParams = {
+                      className
+                    };
+
+                    return (<CustomTag {...CustomTagParams}>{removeTags(label)}</CustomTag>);
+                }
             }
           };
 

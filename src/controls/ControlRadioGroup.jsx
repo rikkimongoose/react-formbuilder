@@ -9,6 +9,7 @@ import {
     Radio
 } from 'antd'
 
+import EditFormHeader from "./EditFormHeader"
 import FormItemLayout from "./FormItemLayout"
 
 const FormItem = Form.Item;
@@ -21,8 +22,22 @@ const ControlRadioGroup = {
             create: () => {
                 return  {
                     "type": "radio-group",
-                    "label": "Text Area",
+                    "label": "Радио",
                     "name": "textarea-1536598113435",
+                    "values": [
+                        {
+                          "label": "Вариант 1",
+                          "value": "option-1"
+                        },
+                        {
+                          "label": "Вариант 2",
+                          "value": "option-2"
+                        },
+                        {
+                          "label": "Вариант 3",
+                          "value": "option-3"
+                        }
+                      ]
                 };
             },
             config: {
@@ -44,76 +59,9 @@ const ControlRadioGroup = {
                     const { getFieldDecorator } = form;
 
                     return (<span>
-                            <FormItem {...FormItemLayout} label="Обязательный">
-                              {getFieldDecorator('required', {
-                              })(
-                                <Checkbox />
-                              )}
-                              </FormItem>
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подпись">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Подпись" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подсказка">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Всплывающая подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Текст внутри">
-                              {getFieldDecorator('placeholder', {
-                              })(
-                                <Input placeholder="Текст внутри" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Класс CSS">
-                              {getFieldDecorator('className', {
-                              })(
-                                <Input placeholder="Класс CSS" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('name', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Значение">
-                              {getFieldDecorator('value', {
-                              })(
-                                <Input placeholder="Значение" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Макс. длина">
-                              {getFieldDecorator('maxlength', {
-                              })(
-                                <InputNumber min={0} />,
-                              )}
-                              </FormItem>
-                            <FormItem {...FormItemLayout} label="Строки">
-                              {getFieldDecorator('rows', {
-                              })(
-                                <InputNumber min={0} />,
-                              )}
-                              </FormItem>
+                            {EditFormHeader(props, form)}
                         </span>)
-                },
-                props: {}
+                }
             },
             view: {
                 generator: (props, data) => {
@@ -132,7 +80,7 @@ const ControlRadioGroup = {
                     const { getFieldDecorator } = form,
                           defaultValue = data || value;
 
-                    const radioVariants = values.map(v => <Radio value={v.value}>v.label</Radio>)
+                    const radioVariants = values.map(v => <Radio value={v.value} key={v.value}>{v.label}</Radio>)
 
                     const tooltipProps = {
                       title: description,
@@ -147,18 +95,17 @@ const ControlRadioGroup = {
                     const controlProps = {
                       className,
                       placeholder,
-                      disabled: readonly,
-                      defaultValue
+                      disabled: readonly
                     };
 
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue:defaultValue
                             })(<RadioGroup {...controlProps}>{radioVariants}</RadioGroup>)}
                             </FormItem>
                             </Tooltip>);
-                },
-                props: {}
+                }
             }
           };
 

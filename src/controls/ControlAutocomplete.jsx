@@ -9,6 +9,7 @@ import {
     AutoComplete
 } from 'antd'
 
+import EditFormHeader from "./EditFormHeader"
 import FormItemLayout from "./FormItemLayout"
 
 const FormItem = Form.Item;
@@ -23,25 +24,19 @@ const ControlAutocomplete = {
                       "name": "autocomplete-1536599310930",
                       "values": [
                         {
-                          "label": "Option 1"
+                          "label": "Вариант 1"
                         },
                         {
-                          "label": "Option 2"
+                          "label": "Вариант 2"
                         },
                         {
-                          "label": "Option 3"
+                          "label": "Вариант 3"
                         }
                       ]
                     }),
             config: {
                 generator: (props) => {
                     const {
-                        required,
-                        label,
-                        placeholder,
-                        description,
-                        className,
-                        name,
                         value,
                         values,
                         form
@@ -50,60 +45,19 @@ const ControlAutocomplete = {
                     const { getFieldDecorator } = form;
 
                     return (<span>
-                            <FormItem {...FormItemLayout} label="Обязательный">
-                              {getFieldDecorator('required', {
-                              })(
-                                <Checkbox />
-                              )}
-                              </FormItem>
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подсказка">
-                              {getFieldDecorator('placeholder', {
-                              })(
-                                <Input placeholder="Подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Всплывающая подсказка">
-                              {getFieldDecorator('description', {
-                              })(
-                                <Input placeholder="Всплывающая подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="CSS класс">
-                              {getFieldDecorator('className', {
-                              })(
-                                <Input placeholder="CSS класс" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('name', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
+                            {EditFormHeader(props, form)}
                             <FormItem {...FormItemLayout} label="Значение">
                               {getFieldDecorator('value', {
+                                initialValue: value
                               })(
                                 <Input placeholder="Значение" />
                               )}
                               </FormItem>
                         </span>)
-                },
-                props: {}
+                }
             },
             view: {
                 generator: (props, data) => {
-                    debugger;
                     const {
                       type,
                       label,
@@ -133,20 +87,19 @@ const ControlAutocomplete = {
                     const controlProps = {
                       className,
                       placeholder,
-                      defaultValue,
                       dataSource: autoCompleteValues
                     }
 
                     return (<Tooltip title={description} key={name}>
                               <FormItem {...formItemProps}>
                               {getFieldDecorator(label, {
+                                initialValue:defaultValue
                                 })(
                                 <AutoComplete {...controlProps} />
                                 )}
                               </FormItem>
                             </Tooltip>);
-                },
-                props: {}
+                }
             }
           };
 

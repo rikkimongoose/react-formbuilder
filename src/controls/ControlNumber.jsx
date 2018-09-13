@@ -8,6 +8,7 @@ import {
     Checkbox
 } from 'antd'
 
+import EditFormHeader from "./EditFormHeader"
 import FormItemLayout from "./FormItemLayout"
 
 const FormItem = Form.Item;
@@ -19,100 +20,62 @@ const ControlNumber = {
             create: () => {
                 return  {
                     "type": "number",
-                    "label": "Text Area",
+                    "label": "Число",
                     "className": "form-control",
                     "name": "number-1536598113435",
+                    "step": 1
                 };
             },
             config: {
                 generator: (props) => {
                     const {
-                        required,
-                        label,
-                        description,
-                        placeholder,
-                        className,
-                        name,
                         value,
-                        subtype,
-                        maxlength,
-                        rows,
+                        min,
+                        max,
+                        step,
                         form
                     } = props;
+
+                    const valueProps = {
+                        min,
+                        max,
+                        step
+                    };
 
                     const { getFieldDecorator } = form;
 
                     return (<span>
-                            <FormItem {...FormItemLayout} label="Обязательный">
-                              {getFieldDecorator('required', {
-                              })(
-                                <Checkbox />
-                              )}
-                              </FormItem>
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подпись">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Подпись" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Подсказка">
-                              {getFieldDecorator('label', {
-                              })(
-                                <Input placeholder="Всплывающая подсказка" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Текст внутри">
-                              {getFieldDecorator('placeholder', {
-                              })(
-                                <Input placeholder="Текст внутри" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Класс CSS">
-                              {getFieldDecorator('className', {
-                              })(
-                                <Input placeholder="Класс CSS" />
-                              )}
-                              </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Название">
-                              {getFieldDecorator('name', {
-                              })(
-                                <Input placeholder="Название" />
-                              )}
-                              </FormItem>
-
+                            {EditFormHeader(props, form)}
                             <FormItem {...FormItemLayout} label="Значение">
                               {getFieldDecorator('value', {
+                                initialValue: value
                               })(
-                                <Input placeholder="Значение" />
+                                <InputNumber {...valueProps} placeholder="Значение" />
                               )}
                               </FormItem>
-
-                            <FormItem {...FormItemLayout} label="Макс. длина">
-                              {getFieldDecorator('maxlength', {
+                            <FormItem {...FormItemLayout} label="Макс.">
+                              {getFieldDecorator('max', {
+                                initialValue: max
                               })(
-                                <InputNumber min={0} />,
+                                <InputNumber placeholder="Максимальное значение" />,
                               )}
                               </FormItem>
-                            <FormItem {...FormItemLayout} label="Строки">
-                              {getFieldDecorator('rows', {
+                            <FormItem {...FormItemLayout} label="Мин.">
+                              {getFieldDecorator('min', {
+                                initialValue: min
                               })(
-                                <InputNumber min={0} />,
+                                <InputNumber placeholder="Минимальное значение" />,
+                              )}
+                              </FormItem>
+                            <FormItem {...FormItemLayout} label="Шаг">
+                              {getFieldDecorator('step', {
+                                initialValue: step
+                              })(
+                                <InputNumber placeholder="Шаг" min={0} />,
                               )}
                               </FormItem>
                         </span>)
-                },
-                props: {}
+                }
             },
             view: {
                 generator: (props, data) => {
@@ -143,7 +106,6 @@ const ControlNumber = {
 
                     const controlProps = {
                         className,
-                        defaultValue: value,
                         min,
                         max,
                         step
@@ -152,12 +114,12 @@ const ControlNumber = {
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue: defaultValue
                             })(<InputNumber {...controlProps} />,
                             )}
                             </FormItem>
                             </Tooltip>);
-                },
-                props: {}
+                }
             }
           };
 

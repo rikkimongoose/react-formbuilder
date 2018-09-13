@@ -9,6 +9,7 @@ import {
     Select
 } from 'antd'
 
+import EditFormHeader from "./EditFormHeader"
 import FormItemLayout from "./FormItemLayout"
 
 const FormItem = Form.Item;
@@ -22,8 +23,22 @@ const ControlSelect = {
             create: () => {
                 return  {
                     "type": "select",
-                    "label": "Text Area",
+                    "label": "Выбор",
                     "name": "select-1536598113435",
+                    "values": [
+                        {
+                          "label": "Option 1",
+                          "value": "option-1"
+                        },
+                        {
+                          "label": "Option 2",
+                          "value": "option-2"
+                        },
+                        {
+                          "label": "Option 3",
+                          "value": "option-3"
+                        }
+                      ]
                 };
             },
             config: {
@@ -133,7 +148,7 @@ const ControlSelect = {
                     const { getFieldDecorator } = form,
                           defaultValue = data || value;
 
-                    const selectoVariants = values.map(v => <Option value={v.value}>v.label</Option>)
+                    const selectVariants = values.map(v => <Option value={v.value} key={v.value}>{v.label}</Option>)
 
                     const tooltipProps = {
                       title: description,
@@ -148,13 +163,13 @@ const ControlSelect = {
                     const controlProps = {
                       className,
                       placeholder,
-                      disabled: readonly,
-                      defaultValue
+                      disabled: readonly
                     };
 
                     return (<Tooltip {...tooltipProps}>
                               <FormItem {...formItemProps}>
                             {getFieldDecorator(label, {
+                              initialValue:defaultValue
                             })(<Select {...controlProps}>{selectVariants}</Select>)}
                             </FormItem>
                             </Tooltip>);
