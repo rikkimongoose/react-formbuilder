@@ -56,7 +56,7 @@ const ControlParagraph = {
                               {getFieldDecorator('label', {
                                 initialValue: label
                               })(
-                                <Input placeholder="Содержимое" />
+                                <TextArea placeholder="Содержимое" />
                               )}
                               </FormItem>
 
