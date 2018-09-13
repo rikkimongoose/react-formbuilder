@@ -29,10 +29,10 @@ const ControlNumber = {
             config: {
                 generator: (props) => {
                     const {
+                        value,
                         min,
                         max,
                         step,
-                        rows,
                         form
                     } = props;
 

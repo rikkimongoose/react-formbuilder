@@ -35,14 +35,14 @@ const EditFormHeader = (props, form) => {
       </FormItem>
       <FormItem {...FormItemLayout} label="Только чтение">
       {getFieldDecorator('readonly', {
-        initialValue: required
+        initialValue: readonly
       })(
         <Checkbox />
       )}
       </FormItem>
     <FormItem {...FormItemLayout} label="Название">
       {getFieldDecorator('label', {
-        initialValue: required
+        initialValue: label
       })(
         <Input placeholder="Название" />
       )}
@@ -50,7 +50,7 @@ const EditFormHeader = (props, form) => {
 
     <FormItem {...FormItemLayout} label="Подсказка">
       {getFieldDecorator('placeholder', {
-        initialValue: required
+        initialValue: placeholder
       })(
         <Input placeholder="Подсказка" />
       )}
@@ -58,7 +58,7 @@ const EditFormHeader = (props, form) => {
 
     <FormItem {...FormItemLayout} label="Всплывающая подсказка">
       {getFieldDecorator('description', {
-        initialValue: required
+        initialValue: description
       })(
         <Input placeholder="Всплывающая подсказка" />
       )}
@@ -66,7 +66,7 @@ const EditFormHeader = (props, form) => {
 
     <FormItem {...FormItemLayout} label="CSS класс">
       {getFieldDecorator('className', {
-        initialValue: required
+        initialValue: className
       })(
         <Input placeholder="CSS класс" />
       )}
@@ -74,7 +74,7 @@ const EditFormHeader = (props, form) => {
 
     <FormItem {...FormItemLayout} label="Идентификатор">
       {getFieldDecorator('name', {
-        initialValue: required
+        initialValue: name
       })(
         <Input placeholder="Идентификатор" />
       )}

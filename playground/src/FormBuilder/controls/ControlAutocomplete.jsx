@@ -37,6 +37,7 @@ const ControlAutocomplete = {
             config: {
                 generator: (props) => {
                     const {
+                        value,
                         values,
                         form
                     } = props;
