@@ -47,13 +47,13 @@ const ControlAutocomplete = {
                             {EditFormHeader(props, form)}
                             <FormItem {...FormItemLayout} label="Значение">
                               {getFieldDecorator('value', {
+                                initialValue: value
                               })(
                                 <Input placeholder="Значение" />
                               )}
                               </FormItem>
                         </span>)
-                },
-                props: {}
+                }
             },
             view: {
                 generator: (props, data) => {
@@ -98,8 +98,7 @@ const ControlAutocomplete = {
                                 )}
                               </FormItem>
                             </Tooltip>);
-                },
-                props: {}
+                }
             }
           };
 

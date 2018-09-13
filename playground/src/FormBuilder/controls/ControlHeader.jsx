@@ -113,8 +113,7 @@ const ControlHeader = {
                               )}
                               </FormItem>
                         </span>)
-                },
-                props: {}
+                }
             },
             view: {
                 generator: (props) => {
@@ -124,8 +123,7 @@ const ControlHeader = {
                     } = props;
                     const CustomTag = `${subtype}`;
                     return (<CustomTag>{removeTags(label)}</CustomTag>);
-                },
-                props: {}
+                }
             }
           };
 
