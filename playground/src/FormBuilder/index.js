@@ -1,10 +1,6 @@
-import ControlEdit from "./ControlEdit"
-import ControlEditor from "./ControlEditor"
-import ControlPreview from "./ControlPreview"
-import ControlsContainer from "./ControlsContainer"
-import ControlsPalette from "./ControlsPalette"
 import FormBuilderMode from "./FormBuilderMode"
 import FormBuilder from "./FormBuilder"
 import GeneratedForm from "./GeneratedForm"
+import VariantsList from "./controls/VariantsList"
 
-export { ControlEdit, ControlEditor, ControlPreview, ControlsContainer, ControlsPalette, FormBuilderMode, FormBuilder, GeneratedForm }
+export { FormBuilderMode, FormBuilder, GeneratedForm, VariantsList }
