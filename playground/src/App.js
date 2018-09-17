@@ -3,11 +3,12 @@ import logo from './logo.svg'
 import './App.css'
 import {
   FormBuilder,
-  VariantsList
+  VariantsTable
 } from './FormBuilder'
 
 class App extends Component {
   render() {
+    const addItem = (item) => {}
   const values = [
       {
         "label": "Вариант 1",
@@ -30,7 +31,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <FormBuilder />
-        <VariantsList source={values} />
+        <VariantsTable source={values} />
       </div>
     );
   }

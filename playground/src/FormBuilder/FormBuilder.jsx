@@ -123,8 +123,6 @@ class FormBuilder extends React.Component {
       mode
     };
 
-    console.log(controls);
-
     const paletteView = (mode === FormBuilderMode.Edit) ? (<ControlsPalette {...controlsPaletteProps} />) : (<span />)
 
     return (<Row>

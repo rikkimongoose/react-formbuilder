@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import {EditableFormRow, EditableCell} from './EditableFormRow'
 
-import { Popconfirm, Button, Table } from 'antd'
+import { Popconfirm, Button, Table, Icon } from 'antd'
 import { Row, Col } from 'antd'
 
 class EditableTable extends React.Component {
@@ -15,7 +15,7 @@ class EditableTable extends React.Component {
     } = this.props;
 
     this.columns = columns.concat([{
-      title: 'operation',
+      title: '',
       dataIndex: 'operation',
       render: (text, record) => {
         const { dataSource } = this.state;
@@ -69,7 +69,7 @@ class EditableTable extends React.Component {
   }
 
   render() {
-    const { dataSource } = this.state;
+    const { dataSource = this.props.dataSource } = this.state;
     const components = {
       body: {
         row: EditableFormRow,
@@ -93,9 +93,6 @@ class EditableTable extends React.Component {
     });
     return (
       <div>
-        <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 }}>
-          Add a row
-        </Button>
         <Table
           components={components}
           rowClassName={() => 'editable-row'}
@@ -103,6 +100,7 @@ class EditableTable extends React.Component {
           dataSource={dataSource}
           columns={columns}
         />
+
       </div>
     );
   }
@@ -111,9 +109,9 @@ class EditableTable extends React.Component {
 export default EditableTable;
 
 EditableTable.propTypes = {
-    key: PropTypes.any.isRequired,
+    id: PropTypes.any.isRequired,
     dataSource: PropTypes.array,
     columns: PropTypes.array,
     onChange: PropTypes.func,
-    addItem: PropTypes.func.isRequired 
+    addItem: PropTypes.func 
 }

@@ -59,6 +59,15 @@ class VariantsList extends React.Component {
             this.setState({currentSource: currentSourceNew});
         }
 
+
+        const changeLabel = (id, value) => {
+
+        }
+
+        const changeValue = (id, value) => {
+
+        }
+
         const DragDropContextProps = {onDragEnd};
 
         const generateControl = (item) => {
@@ -70,7 +79,7 @@ class VariantsList extends React.Component {
                 <Col span={1}><Tooltip title="Удалить"><Button type="danger" size="small" icon="close" onClick={() => deleteItem(item)} /></Tooltip></Col>
             </div>) : (
             <div>
-                <Col span={23}><Input placeholder="Значение" onChange={() => changeValue(id, label)} /></Col>
+                <Col span={23}><Input placeholder="Значение" /></Col>
                 <Col span={1}><Tooltip title="Добавить"><Button type="danger" size="small" icon="close" onClick={() => deleteItem(item)} /></Tooltip></Col>
             </div>
             );
