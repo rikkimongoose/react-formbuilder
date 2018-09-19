@@ -95,7 +95,7 @@ class VariantsList extends React.Component {
             </Row>
             <Row>
             <Col span={23}></Col>
-            <Col span={1}><Tooltip title="Добавить запись"><Button type="primary" onClick={addEmptyItem} className="addVariantToList" shape="circle" icon="file-add" size="large" /></Tooltip></Col>
+            <Col span={1}><Tooltip title="Добавить запись"><Button type="primary" onClick={addEmptyItem} className="addVariantToList" icon="file-add" size="large">Добавить запись</Button></Tooltip></Col>
             </Row>
             </div>);
         }
