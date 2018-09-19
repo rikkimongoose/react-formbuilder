@@ -4,23 +4,31 @@ import PropTypes from 'prop-types'
 
 import {EditableFormRow, EditableCell} from './EditableFormRow'
 
-import { Popconfirm, Button, Table, Icon } from 'antd'
+import { Popconfirm, Button, Table, Icon, Tooltip } from 'antd'
 import { Row, Col } from 'antd'
 
+import generateUUID from './generateUUID'
+
 class EditableTable extends React.Component {
+  state = {
+      data: [],
+      count: 0
+    }
   constructor(props) {
     super(props);
     const {
-      columns
+      columns,
+      dataSource
     } = this.props;
 
-    this.columns = columns.concat([{
+    const { data = dataSource } = this.state;
+
+    this.columns = [...columns, {
       title: '',
       dataIndex: 'operation',
       render: (text, record) => {
-        const { dataSource } = this.state;
         return (
-          dataSource.length >= 1
+           data.length
             ? (
               <div>
                 <Row>
@@ -35,24 +43,20 @@ class EditableTable extends React.Component {
             ) : null
         );
       },
-    }]);
-
-    this.state = {
-      dataSource: [],
-      count: 0,
-    };
+    }];
   }
 
   handleDelete = (key) => {
-    const dataSource = [...this.state.dataSource];
-    this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
+    const data = [...this.state.data];
+    this.setState({ data: data.filter(item => item.key !== key) });
   }
 
   handleAdd = () => {
-    const { count, dataSource } = this.state;
+    const { count, data } = this.state;
+    const { addItem = () => { label: "Название"}} = this.props;
     const newData = this.props.addItem();
     this.setState({
-      dataSource: [...dataSource, newData],
+      data: [...data, newData],
       count: count + 1,
     });
   }
@@ -93,14 +97,32 @@ class EditableTable extends React.Component {
     });
     return (
       <div>
-        <Table
-          components={components}
-          rowClassName={() => 'editable-row'}
-          bordered
-          dataSource={dataSource}
-          columns={columns}
-        />
-
+      <Col>
+        <Row>
+          <Table
+            components={components}
+            rowClassName={() => 'editable-row'}
+            bordered
+            dataSource={dataSource}
+            columns={columns}
+          />
+        </Row>
+        <Row>
+            <Col span={23}></Col>
+            <Col span={1}>
+              <Tooltip title="Добавить запись">
+                <Button
+                  type="primary"
+                  onClick={this.handleAdd}
+                  className="addVariantToList"
+                  shape="circle"
+                  icon="file-add"
+                  size="large"
+                  />
+              </Tooltip>
+            </Col>
+        </Row>
+      </Col>
       </div>
     );
   }

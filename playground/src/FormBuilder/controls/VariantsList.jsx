@@ -37,7 +37,7 @@ class VariantsList extends React.Component {
             onChange = () => {}
         } = this.props;
 
-        const sourceWithKeys = source.map(s => (s.id) ? s : {...s, id: generateUUID() });
+        const sourceWithKeys = source.map(s => (s.id) ? s : {...s, key: generateUUID() });
 
         const {
             currentSource = sourceWithKeys
@@ -48,7 +48,7 @@ class VariantsList extends React.Component {
         };
 
         const addEmptyItem = () => {
-            currentSource.push({label: "", value: "", id: generateUUID()});
+            currentSource.push({label: "", value: "", key: generateUUID()});
             onChange(key, currentSource);
             this.setState({currentSource});
         }
@@ -95,7 +95,7 @@ class VariantsList extends React.Component {
             </Row>
             <Row>
             <Col span={23}></Col>
-            <Col span={1}><Tooltip title="Удалить"><Button type="primary" onClick={addEmptyItem} className="addVariantToList" shape="circle" icon="file-add" size="large" /></Tooltip></Col>                
+            <Col span={1}><Tooltip title="Добавить запись"><Button type="primary" onClick={addEmptyItem} className="addVariantToList" shape="circle" icon="file-add" size="large" /></Tooltip></Col>
             </Row>
             </div>);
         }

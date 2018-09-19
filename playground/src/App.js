@@ -9,7 +9,7 @@ import {
 class App extends Component {
   render() {
     const addItem = (item) => {}
-  const values = [
+  const dataSource = [
       {
         "label": "Вариант 1",
         "value": "option-1"
@@ -24,6 +24,10 @@ class App extends Component {
       }
     ];
 
+  const VariantsTableProps = {
+    dataSource
+  };
+
     return (
       <div className="App">
         <header className="App-header">
@@ -31,7 +35,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <FormBuilder />
-        <VariantsTable source={values} />
+        <VariantsTable {...VariantsTableProps} />
       </div>
     );
   }
