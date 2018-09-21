@@ -13,6 +13,7 @@ const columnsValueOnly = [
         title: 'Значение',
         dataIndex: 'value',
         key: 'value',
+        width: '90%',
       }
       ],
       columnsNameValue = [
@@ -20,7 +21,14 @@ const columnsValueOnly = [
         title: 'Подпись',
         dataIndex: 'label',
         key: 'label',
-      }, ...columnsValueOnly
+        width: '45%',
+      }, 
+      {
+        title: 'Значение',
+        dataIndex: 'value',
+        key: 'value',
+        width: '45%',
+      }
       ];
 
 class VariantsTable extends React.Component {

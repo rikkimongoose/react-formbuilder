@@ -22,16 +22,34 @@ class EditableTable extends React.Component {
 
     this.columns = [...columns, {
       title: '',
-      dataIndex: 'operation',
+      dataIndex: 'operationMove',
+      width: '5%',
       render: (text, record) => {
         return (
            dataSource.length
             ? (
               <div>
                 <Row>
-                  <Col span={8}><a href="javascript:;"><Icon type="caret-up" theme="outlined" /></a></Col>
-                  <Col span={8}><a href="javascript:;"><Icon type="caret-down" theme="outlined" /></a></Col>
-                  <Col span={8}><Popconfirm title="Вы действительно хотите удалить?" onConfirm={() => this.handleDelete(record.key)}>
+                  <Col span={12}><a href="javascript:;"><Icon type="caret-up" theme="outlined" /></a></Col>
+                  <Col span={12}><a href="javascript:;"><Icon type="caret-down" theme="outlined" /></a></Col>
+                </Row>
+              </div>
+            ) : null
+        );
+      },
+    }, {
+      title: '',
+      dataIndex: 'operationEdit',
+      width: '5%',
+      render: (text, record) => {
+        //const editable = this.isEditing(record);
+        return (
+           dataSource.length
+            ? (
+              <div>
+                <Row>
+                  <Col span={12}><a href="javascript:;"><Icon type="edit" theme="outlined" /></a></Col>
+                  <Col span={12}><Popconfirm title="Вы действительно хотите удалить?" onConfirm={() => this.handleDelete(record.key)}>
                       <a href="javascript:;"><Icon type="delete" theme="outlined" /></a>
                     </Popconfirm>
                   </Col>

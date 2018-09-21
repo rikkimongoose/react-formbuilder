@@ -15,16 +15,19 @@ const columnsLabelValue = [{
   title: 'Подпись',
   dataIndex: 'value',
   key: 'value',
+  editable: true
 }, {
   title: 'Значение',
   dataIndex: 'value',
   key: 'value',
+  editable: true,
 }];
 
 const columnsValue = [{
   title: 'Значение',
   dataIndex: 'value',
   key: 'value',
+  editable: true,
 }];
 
 class VariantsList extends React.Component {
